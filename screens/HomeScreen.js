@@ -55,7 +55,6 @@ const search = (term) => {
         </View>
 
         <View style={styles.getStartedContainer}>
-          <DevelopmentModeNotice />
 
           <Text style={styles.getStartedText}>This is in</Text>
 
