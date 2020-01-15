@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 
 //Components
 //TODO add additemform at the top
@@ -9,9 +9,10 @@ import AddItemForm from './AddItemForm';
 function Inventory(props){
         return (
             <View>
+                <Text>yasss bish</Text>
                 <FlatList 
                     data={props.itemList}
-                    renderItem={({ item }) => <DealItem deal={item} onPress={this.props.onItemPress} />}
+                    renderItem={({ item }) => <Item deal={item} onPress={this.props.onItemPress} />}
                     keyExtractor={item => item.key}
                 />
             </View>

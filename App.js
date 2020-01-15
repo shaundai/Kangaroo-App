@@ -12,22 +12,21 @@ export default function App(props) {
   const [itemList, setItemList] = useState([{ name: "scissors", desc: "the scissors", box: 3, location: "here", owner: "sally", quantity: 4 },  {name: "brush", desc: "the dopest brush", box: 3, location: "here", owner: "sally", quantity: 1 }])
   const [searchResults, setSearchResults] = useState([]);
 
-  function addItem(item){
+  const addItem = (item) => {
     const newItemList = {...itemList};
     newItemList[`item${Date.now()}`] = item
     setItemList(newItemList);
-}
+  }
+  const updateItem = (key, updatedItem) => {
+    //take copy of the current state
+    const items = { ...itemList };
+    //update the state to that of the updatedItem we took in
+    items[key] = updatedItem;
+    //set the state with the updatedItem'
+    setItemList(items);
+  }
 
-const updateItem = (key, updatedItem) => {
-  //take copy of the current state
-  const items = { ...itemList };
-  //update the state to that of the updatedItem we took in
-  items[key] = updatedItem;
-  //set the state with the updatedItem'
-  setItemList(items);
-}
-
-const deleteItem = (key) => {
+  const deleteItem = (key) => {
   setItemList(itemList.filter(item => itemList[key] !== item));
   console.log(key)
 }
@@ -63,8 +62,8 @@ const search = (term) => {
 async function loadResourcesAsync() {
   await Promise.all([
     Asset.loadAsync([
-      require('./assets/images/robot-dev.png'),
-      require('./assets/images/robot-prod.png'),
+      //require('./assets/images/robot-dev.png'),
+      //require('./assets/images/robot-prod.png'),
     ]),
     Font.loadAsync({
       // This is the font that we are using for our tab bar

@@ -5,7 +5,8 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import AddItemScreen from '../screens/AddItemScreen';
+import InventoryScreen from '../screens/InventoryScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 const config = Platform.select({
@@ -13,22 +14,21 @@ const config = Platform.select({
   default: {},
 });
 
-const HomeStack = createStackNavigator(
-  {
+const HomeStack = createStackNavigator({
     Home: HomeScreen,
   },
   config
 );
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel: 'Find Item',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          ? 'ios-search'
+          : 'md-search'
       }
     />
   ),
@@ -36,41 +36,58 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
-const LinksStack = createStackNavigator(
+const AddItemStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    AddItem: AddItemScreen,
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+AddItemStack.navigationOptions = {
+  tabBarLabel: 'Add Item',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-add-circle-outline' : 'md-add-circle-outline'} />
   ),
 };
 
-LinksStack.path = '';
+AddItemStack.path = '';
 
-const SettingsStack = createStackNavigator(
-  {
-    Settings: SettingsScreen,
+
+const InventoryStack = createStackNavigator({
+    Inventory: InventoryScreen,
   },
   config
 );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+InventoryStack.navigationOptions = {
+  tabBarLabel: 'Inventory',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-clipboard' : 'md-clipboard'} />
   ),
+};
+
+InventoryStack.path = '';
+
+
+const SettingsStack = createStackNavigator({
+  Settings: SettingsScreen,
+},
+config
+);
+
+SettingsStack.navigationOptions = {
+tabBarLabel: 'Scan Box',
+tabBarIcon: ({ focused }) => (
+  <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-qr-scanner' : 'md-qr-scanner'} />
+),
 };
 
 SettingsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
-  LinksStack,
+  AddItemStack,
+  InventoryStack,
   SettingsStack,
 });
 

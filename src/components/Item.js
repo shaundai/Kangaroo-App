@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Button } from 'react-native';
+import { TouchableOpacity, Button, Text } from 'react-native';
 
 function Item(props) {
     const { name, desc, quantity, box, location, owner } = props.details; //destructuring like a bawse
