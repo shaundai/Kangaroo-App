@@ -1,9 +1,23 @@
 import React from 'react';
-import Inventory from '../src/components/Inventory'
+import { View, Text, FlatList } from 'react-native';
+import Item from '../src/components/Item';
 
-export default function InventoryScreen() {
+//Components
+//TODO add additemform at the top
+//import EditItemForm from './EditItemForm'
+//import AddItemForm from './AddItemForm';
 
-  return <Inventory />;
+export default function InventoryScreen(props){
+        return (
+            <View>
+                <Text>yasss bish</Text>
+                <FlatList 
+                    data={props.screenProps.itemList}
+                    renderItem={({ item }) => <Item />}
+                    keyExtractor={item => item.key}
+                />
+            </View>
+        )
 }
 
 InventoryScreen.navigationOptions = {

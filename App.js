@@ -27,19 +27,19 @@ export default function App(props) {
     setItemList(items);
   }
 
-  const deleteItem = (key) => {
-  setItemList(itemList.filter(item => itemList[key] !== item));
-  console.log(key)
-}
+    const deleteItem = (key) => {
+    setItemList(itemList.filter(item => itemList[key] !== item));
+    console.log(key)
+  }
 
-const search = (term) => {
-  //takes in the names or descriptions of any item
-  //filters through to see if any of them contain words in the search term
-  //returns terms with only terms searched for
-  let results = itemList.filter(item => item.name.includes(term) || item.desc.includes(term))
-  setSearchResults(results);
-  console.log(searchResults)
-}
+    const search = (term) => {
+      //takes in the names or descriptions of any item
+      //filters through to see if any of them contain words in the search term
+      //returns terms with only terms searched for
+      let results = itemList.filter(item => item.name.includes(term) || item.desc.includes(term))
+      setSearchResults(results);
+      console.log(searchResults)
+    }
 
 //TODO - clean this up.  expo cli stuff starts here
   if (!isLoadingComplete && !props.skipLoadingScreen) {
@@ -54,8 +54,17 @@ const search = (term) => {
     return (
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <AppNavigator />
-        <Inventory />
+        <AppNavigator
+          screenProps={{
+            itemList,
+            searchResults,
+            addItem,
+            updateItem,
+            deleteItem,
+            setItemList,
+            setSearchResults,
+            search,
+            }} />
       </View>
     );
   }
