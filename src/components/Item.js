@@ -1,8 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Button, Text } from 'react-native';
 
-function Item(props) {
-    const { name, desc, quantity, box, location, owner } = props.details; //destructuring like a bawse
+function Item({ name, desc, quantity, box, location, owner }) {
         return (
             <TouchableOpacity>
                 <Text>{name}</Text>

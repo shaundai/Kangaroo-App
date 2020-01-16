@@ -10,7 +10,7 @@ import AppNavigator from './navigation/AppNavigator';
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
-  const [itemList, setItemList] = useState([{ name: "scissors", desc: "the scissors", box: 3, location: "here", owner: "sally", quantity: 4 },  {name: "brush", desc: "the dopest brush", box: 3, location: "here", owner: "sally", quantity: 1 }])
+  const [itemList, setItemList] = useState([{ id: 1, name: "scissors", desc: "the scissors", box: 3, location: "here", owner: "sally", quantity: 4 },  {id: 2, name: "brush", desc: "the dopest brush", box: 3, location: "here", owner: "sally", quantity: 1 }])
   const [searchResults, setSearchResults] = useState([]);
 
   const addItem = (item) => {
