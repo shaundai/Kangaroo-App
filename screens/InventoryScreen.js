@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, FlatList } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import Item from '../src/components/Item';
+import { useSelector } from 'react-redux';
 
 //Components
 //TODO add additemform at the top
@@ -8,8 +9,10 @@ import Item from '../src/components/Item';
 //import AddItemForm from './AddItemForm';
 
 export default function InventoryScreen({ screenProps }){
+    const testStuff = useSelector(state => state.itemListReducer[0].name)
         return (
             <View>
+                <Text>{testStuff}</Text>
                 <FlatList 
                     data={screenProps.itemList}
                     renderItem={({ item }) => <Item {...item} />}
