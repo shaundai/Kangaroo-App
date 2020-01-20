@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import Item from '../src/components/Item';
 import { useSelector } from 'react-redux';
 
@@ -8,13 +8,12 @@ import { useSelector } from 'react-redux';
 //import EditItemForm from './EditItemForm'
 //import AddItemForm from './AddItemForm';
 
-export default function InventoryScreen({ screenProps }){
-    const testStuff = useSelector(state => state.itemListReducer[0].name)
+export default function InventoryScreen(){
+    const itemList = useSelector(state => state.itemListReducer)
         return (
             <View>
-                <Text>{testStuff}</Text>
                 <FlatList 
-                    data={screenProps.itemList}
+                    data={itemList}
                     renderItem={({ item }) => <Item {...item} />}
                     keyExtractor={item => String(item.id)}
                 />
