@@ -5,6 +5,8 @@ export const deleteItem = (id) => ({
       id
  })
 
- export const addItem = () => ({
-     id: newId,
+ export const addItem = (payload) => ({
+     type: 'ADDITEM',
+     id: `item${newId}`,
+     payload
  })

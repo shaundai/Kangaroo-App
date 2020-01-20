@@ -3,7 +3,15 @@ const itemList = [{ id: 1, name: "scissors", desc: "the scissors", box: 3, locat
 const itemListReducer = (state = itemList, action) => {
     switch (action.type) {
         case 'DELETEITEM':
-            return state.filter(item => action.id !== item.id)
+            return state.filter(item => action.id !== item.id);
+        case 'ADDITEM':
+            return [
+                ...state,
+                {
+                    id: action.id
+                    
+                }
+            ]
         default:
             return state
     }}

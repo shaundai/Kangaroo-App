@@ -30,11 +30,6 @@ export default function App(props) {
     setItemList(items);
   }
 
-    const deleteItem = (key) => {
-    setItemList(itemList.filter(item => itemList[key] !== item));
-    console.log(key)
-  }
-
     const search = (term) => {
       //takes in the names or descriptions of any item
       //filters through to see if any of them contain words in the search term
@@ -54,7 +49,6 @@ export default function App(props) {
             searchResults,
             addItem,
             updateItem,
-            deleteItem,
             setItemList,
             setSearchResults,
             search,
