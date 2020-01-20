@@ -9,7 +9,8 @@ import { useSelector } from 'react-redux';
 //import AddItemForm from './AddItemForm';
 
 export default function InventoryScreen(){
-    const itemList = useSelector(state => state.itemListReducer)
+    const itemList = useSelector(state => state.itemListReducer);
+    
         return (
             <View>
                 <FlatList 

@@ -1,7 +1,11 @@
 import React from 'react';
 import { TouchableOpacity, Button, Text } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { deleteItem } from '../actions/index';
 
-function Item({ name, desc, quantity, box, location, owner }) {
+
+function Item({ id, name, desc, quantity, box, location, owner }) {
+    const dispatch = useDispatch();
         return (
             <TouchableOpacity>
                 <Text>{name}</Text>
@@ -10,8 +14,9 @@ function Item({ name, desc, quantity, box, location, owner }) {
                 <Text>Quantity: {quantity}</Text>
                 <Text>Location: {location}</Text>
                 <Text>Owner: {owner}</Text>
+                <Text>{id}</Text>
                 <Button title="Delete Item"
-                onPress={()=>{if (window.confirm('Are you sure you want to delete me?'))props.deleteItem(props.index)}}
+                onPress={()=>dispatch(deleteItem(id))}
                 />
             </TouchableOpacity>
         )

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { createStore } from 'redux';
-import { Provider, useSelector } from 'react-redux';
+import { Provider } from 'react-redux';
 import allReducers from './src/reducers/index'
 
 import AppNavigator from './navigation/AppNavigator';
@@ -11,13 +11,6 @@ let store = createStore(
   allReducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
-
-
-const setItemListAction = () => {
-   return {
-     type: 'ITEMLISTREDUCER'
-   }
-}
 
 export default function App(props) {
   const [itemList, setItemList] = useState([{ id: 1, name: "scissors", desc: "the scissors", box: 3, location: "here", owner: "sally", quantity: 4 },  {id: 2, name: "brush", desc: "the dopest brush", box: 3, location: "here", owner: "sally", quantity: 1 }])
