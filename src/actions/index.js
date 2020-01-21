@@ -1,4 +1,5 @@
 let newId = Date.now();
+//TODO change this to a better identifier
 
 export const deleteItem = (id) => ({
       type: 'DELETEITEM',
