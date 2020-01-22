@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, Button, View } from 'react-native';
 import { Input } from 'react-native-elements';
 import ContactForm from '../src/components/AddItemForm';
 
-export default function AddItemScreen({ nameRef, descRef, ownerRef, boxRef, locationRef, quantityRef, addItem}) {
+export default function AddItemScreen({ nameRef, descRef, ownerRef, boxRef, locationRef, quantityRef, handleSubmit}) {
   nameRef = React.createRef();
   descRef = React.createRef();
   ownerRef = React.createRef();
@@ -26,9 +26,6 @@ export default function AddItemScreen({ nameRef, descRef, ownerRef, boxRef, loca
       console.log(item)
   }
 
-  const handleSubmit = value => {
-    alert(`submitting ${value}`)
-  }
   return (
     <ScrollView style={styles.container}>
       <View>

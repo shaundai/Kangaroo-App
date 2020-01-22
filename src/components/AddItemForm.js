@@ -1,12 +1,18 @@
 import React from 'react';
-import { Button, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { Field, reduxForm } from 'redux-form'
 
 let renderField = () => {
     return (
         <View>
-            <Text>cool stuff</Text>
-            <TextInput name="inputName" placeholder='we could be great' type="text" />
+            <Text>Name</Text>
+            <TextInput
+            name="inputName"
+            placeholder='insert test text'
+            type="text"
+            onSubmitEditing={(text)=>{console.log(text)}}
+            />
+            <TouchableOpacity title='real submit' type="submit" onPress={(e)=>console.log(e)}></TouchableOpacity>
         </View>
     )
 }
@@ -16,13 +22,12 @@ const ContactComponent = () => {
         <View>
             <Text>here's some text</Text>
             <Field label='Username:' component={renderField} name='Username' ></Field>
-            <TouchableOpacity onPress={(e) => console.log(e)}><Text>Submit</Text></TouchableOpacity>
+            <TouchableOpacity type="submit" onPress={(e)=>{console.log(e)}}><Text>Submit</Text></TouchableOpacity>
         </View>
     )
 }
 
 const ContactForm = reduxForm({
-  // a unique name for the form
   form: 'contact'
 })(ContactComponent)
 
