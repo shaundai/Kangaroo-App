@@ -1,28 +1,29 @@
 import React from 'react';
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Button } from 'react-native';
 import { Field, reduxForm } from 'redux-form'
-
-let renderField = () => {
+//TODO deletedis
+const inputField = ({label, name, placeholder}) => {
     return (
         <View>
-            <Text>Name</Text>
+            <Text>{label}</Text>
             <TextInput
-            name="inputName"
-            placeholder='insert test text'
-            type="text"
-            onSubmitEditing={(text)=>{console.log(text)}}
+                name={name}
+                placeholder={placeholder}
+                type="text"
+                ref={React.createRef()}
+                onSubmitEditing={e => console.log('ref')}
             />
-            <TouchableOpacity title='real submit' type="submit" onPress={(e)=>console.log(e)}></TouchableOpacity>
+            <Button title='try me' type='submit' onPress={console.log('hi')}></Button>
         </View>
     )
 }
 
-const ContactComponent = () => {
+const ContactComponent = (props) => {
+    const { handleSubmit } = props;
     return (
         <View>
-            <Text>here's some text</Text>
-            <Field label='Username:' component={renderField} name='Username' ></Field>
-            <TouchableOpacity type="submit" onPress={(e)=>{console.log(e)}}><Text>Submit</Text></TouchableOpacity>
+            <Field label='Username:' component={inputField} name='Username' placeholder='Name'></Field>
+            <TouchableOpacity type="submit" onPress={handleSubmit}><Text>Submit</Text></TouchableOpacity>
         </View>
     )
 }
