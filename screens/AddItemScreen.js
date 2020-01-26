@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Button, View } from 'react-native';
 import { TextInput } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../src/actions/index';
 
 export default function AddItemScreen({ name, desc, owner, box, location, quantity}) {
   const [newItem, setNewItem] = useState({ name: '', desc: '', owner: '', box: '', location: '', quantity: ''});
+  const dispatch = useDispatch();
 
   name = 'name';
   desc = 'desc';
@@ -19,16 +22,6 @@ export default function AddItemScreen({ name, desc, owner, box, location, quanti
     console.log(newItemPart)
     };
 
-  const createItem = (e) => {
-      e && e.preventDefault();
-      const item = {
-         newItem ///add this item to redux state
-      }
-      //addItem(item);
-      //e.currentTarget.reset(); this needs to be a new global state
-      console.log(item)
-  }
-
   return (
     <ScrollView style={styles.container}>
       <View>
@@ -39,7 +32,7 @@ export default function AddItemScreen({ name, desc, owner, box, location, quanti
       <TextInput value={newItem.location} placeholder="Where is this box?" onChangeText={text => handleChangeText(text, location)} ></TextInput>
       <TextInput value={newItem.quantity} placeholder="Quantity" onChangeText={text => handleChangeText(text, quantity)} ></TextInput>
       <Button title="Add Item"
-      onPress={()=> createItem()}/>
+      onPress={()=>dispatch(addItem(newItem))}/>
       </View>
     </ScrollView>
   );

@@ -8,10 +8,10 @@ const itemListReducer = (state = itemList, action) => {
             return [
                 ...state,
                 {
-                    id: action.id
-                    
-                }
-            ]
+                    id: action.id,
+                    ...action.payload
+                }         
+            ];
         default:
             return state
     }}

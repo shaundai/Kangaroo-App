@@ -1,4 +1,4 @@
-let newId = Date.now();
+let newId = 3;
 //TODO change this to a better identifier
 
 export const deleteItem = (id) => ({
@@ -8,6 +8,6 @@ export const deleteItem = (id) => ({
 
  export const addItem = (payload) => ({
      type: 'ADDITEM',
-     id: `item${newId}`,
+     id: newId++,
      payload
  })
