@@ -27,12 +27,14 @@ export default function AddItemScreen({ name, desc, owner, box, location, quanti
       <View>
       <TextInput value={newItem.name} placeholder="What is this?" onChangeText={text => handleChangeText(text, name)} required></TextInput>
       <TextInput value={newItem.desc} placeholder="Describe this item." onChangeText={text => handleChangeText(text, desc)} ></TextInput>
-      <TextInput value={newItem.owner} placeholder="Who does this belong to? (ex. the cat, Sally)" onChangeText={text => handleChangeText(text, owner)} ></TextInput>
+      <TextInput value={newItem.owner} placeholder="Who does this belong to? (ex. Lila)" onChangeText={text => handleChangeText(text, owner)} ></TextInput>
       <TextInput value={newItem.box} placeholder="Which box?" onChangeText={text => handleChangeText(text, box)} required></TextInput>
       <TextInput value={newItem.location} placeholder="Where is this box?" onChangeText={text => handleChangeText(text, location)} ></TextInput>
       <TextInput value={newItem.quantity} placeholder="Quantity" onChangeText={text => handleChangeText(text, quantity)} ></TextInput>
       <Button title="Add Item"
-      onPress={()=>dispatch(addItem(newItem))}/>
+      onPress={(e)=>{
+        e.preventDefault();
+        dispatch(addItem(newItem))}}/>
       </View>
     </ScrollView>
   );

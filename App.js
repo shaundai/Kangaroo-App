@@ -16,11 +16,6 @@ export default function App(props) {
   const [itemList, setItemList] = useState([{ id: 1, name: "scissors", desc: "the scissors", box: 3, location: "here", owner: "sally", quantity: 4 },  {id: 2, name: "brush", desc: "the dopest brush", box: 3, location: "here", owner: "sally", quantity: 1 }])
   const [searchResults, setSearchResults] = useState([]);
 
-  const addItem = (item) => {
-    const newItemList = {...itemList};
-    newItemList[`item${Date.now()}`] = item
-    setItemList(newItemList);
-  }
   const updateItem = (key, updatedItem) => {
     //take copy of the current state
     const items = { ...itemList };
@@ -47,7 +42,6 @@ export default function App(props) {
           screenProps={{
             itemList,
             searchResults,
-            addItem,
             updateItem,
             setItemList,
             setSearchResults,

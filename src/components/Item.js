@@ -3,7 +3,6 @@ import { TouchableOpacity, Button, Text } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { deleteItem } from '../actions/index';
 
-
 function Item({ id, name, desc, quantity, box, location, owner }) {
     const dispatch = useDispatch();
         return (
