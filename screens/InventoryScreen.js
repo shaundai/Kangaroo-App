@@ -22,8 +22,8 @@ export default function InventoryScreen(){
     renderItem = ({ item }) => (
     <ListItem
         title={item.name}
+        subtitleNumberOfLines={2}
         subtitle={item.desc}
-        subtitle={item.owner}
         leftAvatar={{ source: { uri: item.avatar_url } }}
         bottomDivider
         chevron
