@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, FlatList } from 'react-native';
+import { View, StyleSheet, TouchableHighlight } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { ListItem, Text, Button, ButtonGroup } from 'react-native-elements'
+import { ListItem, Text } from 'react-native-elements'
 import { deleteItem } from '../src/actions/index';
-import Item from '../src/components/Item';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import { SwipeListView } from 'react-native-swipe-list-view';
+import { Ionicons } from '@expo/vector-icons';
+
 
 //Components
 //TODO add additemform at the top
@@ -17,7 +18,17 @@ export default function InventoryScreen(){
     const dispatch = useDispatch();
     keyExtractor = (item, index) => index.toString()
 
-
+    renderHiddenItem = ({item}) => (
+        <View style={styles.hiddenDelete}>
+        <TouchableHighlight
+            onPress={()=>dispatch(deleteItem(item.id))}
+            activeOpacity={1}
+            underlayColor={"transparent"}
+            >
+            <Ionicons name="ios-trash" size={32} color="white"/>
+            </TouchableHighlight>
+            </View>
+    )
 
     renderItem = ({ item }) => (
     <ListItem
@@ -27,25 +38,44 @@ export default function InventoryScreen(){
         leftAvatar={{ source: { uri: item.avatar_url } }}
         bottomDivider
         chevron
-        rightElement={<TouchableHighlight
-            onPress={()=>dispatch(deleteItem(item.id))}
-            activeOpacity={1}
-            underlayColor={"transparent"}
-            ><Text>Delete</Text></TouchableHighlight>}
-
-
         />
 )
         return (
             <View>
-                <FlatList 
+                <SwipeListView
+                    useFlatList={true}
                     data={list}
                     renderItem={renderItem}
                     keyExtractor={keyExtractor}
+                    renderHiddenItem={renderHiddenItem}
+                    leftOpenValue={75}
+                    rightOpenValue={-150}
+                    onRowOpen={(rowKey, rowMap) => {
+                    setTimeout(() => {
+                        rowMap[rowKey].closeRow()
+                    }, 2000)
+    }}
                 />
             </View>
         )
 }
+
+const styles = StyleSheet.create({
+    hiddenDelete: {
+        zIndex: 1,
+        bottom: 0,
+        left: 0,
+        overflow: 'hidden',
+        position: 'absolute',
+        right: 0,
+        top: 0,
+        backgroundColor: 'red',
+    },
+    hiddenDeleteText: {
+        color: 'white',
+        textAlign: 'right',
+    }
+})
 
 InventoryScreen.navigationOptions = {
   title: 'Inventory',
