@@ -25,7 +25,7 @@ export default function InventoryScreen(){
             activeOpacity={1}
             underlayColor={"transparent"}
             >
-            <Ionicons name="ios-trash" size={32} color="white"/>
+            <Ionicons name="ios-trash" size={52} color="white" style={styles.trash} />
             </TouchableHighlight>
             </View>
     )
@@ -70,10 +70,15 @@ const styles = StyleSheet.create({
         right: 0,
         top: 0,
         backgroundColor: 'red',
+        justifyContent: 'center',
+        alignContent: 'center',
+        height: "100%"
     },
-    hiddenDeleteText: {
+    trash: {
         color: 'white',
-        textAlign: 'right',
+        position: 'absolute',
+        right: 0,
+        paddingRight: 10,
     }
 })
 
