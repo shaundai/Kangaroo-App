@@ -15,7 +15,9 @@ export default function InventoryScreen(){
     const itemList = useSelector(state => state.itemListReducer);
     const list = itemList;
     const dispatch = useDispatch();
-    //const keyExtractor = item => 
+    keyExtractor = item => (
+        item.id.toString()
+    )
 
     renderHiddenItem = ({item}) => (
         <View style={styles.hiddenDelete}>
@@ -46,13 +48,14 @@ export default function InventoryScreen(){
                     data={list}
                     renderItem={renderItem}
                     renderHiddenItem={renderHiddenItem}
-                    keyExtractor={item => item.id}
+                    keyExtractor={keyExtractor}
                     leftOpenValue={0}
                     rightOpenValue={-75}
                     onRowOpen={(rowKey, rowMap) => {
                     setTimeout(() => {
-                        rowMap[rowKey].closeRow()
-                    }, 2000)
+                        if (rowMap[rowKey]){
+                            rowMap[rowKey].closeRow()
+                    }}, 2000)
     }}
                 />
             </View>
