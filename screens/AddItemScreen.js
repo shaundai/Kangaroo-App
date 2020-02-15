@@ -26,18 +26,26 @@ export default function AddItemScreen({ name, desc, owner, box, location, quanti
   return (
     <ScrollView contentContainerStyle={styles.container} >
       <View containerStyle={{flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center', backgroundColor: '317873'}}>
-      <Text style={styles.tag}>Item Name...</Text>
-      <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.name} placeholder="Hair Dryer" placeholderTextColor='white' onChangeText={text => handleChangeText(text, name)} required></Input>
-      <Text style={styles.tag}>Description...</Text>
-      <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.desc} placeholder="Conair Blue" placeholderTextColor='white' onChangeText={text => handleChangeText(text, desc)} ></Input>
-      <Text style={styles.tag}>Owner...</Text>
-      <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.owner} placeholder="David" placeholderTextColor='white' onChangeText={text => handleChangeText(text, owner)} ></Input>
-      <Text style={styles.tag}>Box...</Text>
-      <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.box} placeholder="Kitchen 2" placeholderTextColor='white' onChangeText={text => handleChangeText(text, box)} required></Input>
-      <Text style={styles.tag}>Box/Item Location...</Text>
-      <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.location} placeholder="Public Storage" placeholderTextColor='white' onChangeText={text => handleChangeText(text, location)} ></Input>
-      <Text style={styles.tag}>Quantity...</Text>
-      <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.quantity} placeholder="40" placeholderTextColor='white' onChangeText={text => handleChangeText(text, quantity)} ></Input>
+      <Text style={styles.tag}>Item</Text>
+      <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.name} placeholder="Hair Dryer" placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, name)} required></Input>
+      <Text style={styles.tag}>Owner</Text>
+      <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.owner} placeholder="David" placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, owner)} ></Input>
+      <View style={styles.miniGrid}>
+        <View>
+          <Text style={styles.tag}>Box</Text>
+          <Input inputContainerStyle={{borderBottomWidth: 0, width: 150}} inputStyle={styles.field} value={newItem.box} placeholder="Kitchen 2" placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, box)} required></Input>
+        </View>
+        <View>
+          <Text style={styles.tag}>Box/Item Location</Text>
+          <Input inputContainerStyle={{borderBottomWidth: 0, width: 150}} inputStyle={styles.field} value={newItem.location} placeholder="Public Storage" placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, location)} ></Input>
+        </View>
+      </View>
+      <View>
+          <Text style={styles.tag}>Quantity</Text>
+          <Input inputContainerStyle={{borderBottomWidth: 0, width: 50}} inputStyle={styles.field} value={newItem.quantity} placeholder="1" placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, quantity)} ></Input>
+      </View>
+      <Text style={styles.tag}>Description</Text>
+      <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.desc} placeholder="Conair Blue" placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, desc)} ></Input>
       <TouchableOpacity style={styles.button}
       onPress={(e)=>{
         dispatch(addItem(newItem))}}>
@@ -54,6 +62,7 @@ AddItemScreen.navigationOptions = {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#F0F0F0',
     flex: 1,
     padding: 10,
     },
@@ -64,8 +73,12 @@ const styles = StyleSheet.create({
     paddingBottom: 0,
     fontSize: 19,
   },
+  miniGrid: {
+    flexDirection: "row",
+    justifyContent: 'space-between',
+  },
   field: {
-    backgroundColor: 'lightgray',
+    backgroundColor: 'white',
     fontSize: 16,
     color: 'black',
     paddingLeft: 15,
@@ -81,7 +94,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 8,
     alignSelf: 'center',
-    backgroundColor: '#383838',
+    backgroundColor: '#484848',
     justifyContent: 'center',
   },
   buttonText: {
