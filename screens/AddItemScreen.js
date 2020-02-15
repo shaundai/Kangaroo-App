@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
-import { Input, Button, withTheme } from 'react-native-elements';
+import { ScrollView, StyleSheet, View, Text } from 'react-native';
+import { Input } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../src/actions/index';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function AddItemScreen({ name, desc, owner, box, location, quantity}) {
   const [newItem, setNewItem] = useState({ name: '', desc: '', owner: '', box: '', location: '', quantity: ''});
@@ -24,17 +25,24 @@ export default function AddItemScreen({ name, desc, owner, box, location, quanti
 
   return (
     <ScrollView contentContainerStyle={styles.container} >
-      <View containerStyle={{flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center'}}>
-      <Input inputStyle={styles.field} value={newItem.name} placeholder="What is this?" placeholderTextColor='white' onChangeText={text => handleChangeText(text, name)} required></Input>
-      <Input inputStyle={styles.field} value={newItem.desc} placeholder="Describe this item." placeholderTextColor='white' onChangeText={text => handleChangeText(text, desc)} ></Input>
-      <Input inputStyle={styles.field} value={newItem.owner} placeholder="Who does this item belong to?" placeholderTextColor='white' onChangeText={text => handleChangeText(text, owner)} ></Input>
-      <Input inputStyle={styles.field} value={newItem.box} placeholder="Which box?" placeholderTextColor='white' onChangeText={text => handleChangeText(text, box)} required></Input>
-      <Input inputStyle={styles.field} value={newItem.location} placeholder="Where is this box?" placeholderTextColor='white' onChangeText={text => handleChangeText(text, location)} ></Input>
-      <Input inputStyle={styles.field} value={newItem.quantity} placeholder="Quantity" placeholderTextColor='white' onChangeText={text => handleChangeText(text, quantity)} ></Input>
-      <Button style={styles.button} title="Add Item"
+      <View containerStyle={{flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center', backgroundColor: '317873'}}>
+      <Text style={styles.tag}>Item Name...</Text>
+      <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.name} placeholder="Hair Dryer" placeholderTextColor='white' onChangeText={text => handleChangeText(text, name)} required></Input>
+      <Text style={styles.tag}>Description...</Text>
+      <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.desc} placeholder="Conair Blue" placeholderTextColor='white' onChangeText={text => handleChangeText(text, desc)} ></Input>
+      <Text style={styles.tag}>Owner...</Text>
+      <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.owner} placeholder="David" placeholderTextColor='white' onChangeText={text => handleChangeText(text, owner)} ></Input>
+      <Text style={styles.tag}>Box...</Text>
+      <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.box} placeholder="Kitchen 2" placeholderTextColor='white' onChangeText={text => handleChangeText(text, box)} required></Input>
+      <Text style={styles.tag}>Box/Item Location...</Text>
+      <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.location} placeholder="Public Storage" placeholderTextColor='white' onChangeText={text => handleChangeText(text, location)} ></Input>
+      <Text style={styles.tag}>Quantity...</Text>
+      <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.quantity} placeholder="40" placeholderTextColor='white' onChangeText={text => handleChangeText(text, quantity)} ></Input>
+      <TouchableOpacity style={styles.button}
       onPress={(e)=>{
-        e.preventDefault();
-        dispatch(addItem(newItem))}}/>
+        dispatch(addItem(newItem))}}>
+          <Text style={styles.buttonText}>Done! Add Item</Text>
+          </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -47,15 +55,22 @@ AddItemScreen.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     padding: 10,
     },
+  tag: {
+    color: 'black',
+    padding: 10,
+    paddingTop: 15,
+    paddingBottom: 0,
+    fontSize: 19,
+  },
   field: {
-    backgroundColor: 'lightblue',
-    color: 'white',
-    paddingLeft: 10,
+    backgroundColor: 'lightgray',
+    fontSize: 16,
+    color: 'black',
+    paddingLeft: 15,
     paddingRight: 10,
-    marginTop: 10,
+    marginTop: 5,
     borderRadius: 8,
     borderBottomWidth: 0,
     borderBottomColor: 'white'
@@ -63,6 +78,16 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 30,
     width: 200,
+    height: 50,
+    borderRadius: 8,
     alignSelf: 'center',
+    backgroundColor: '#383838',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    color: 'white',
+    textAlignVertical: 'center',
+    fontSize: 16,
+    textAlign: 'center',
   }
 });
