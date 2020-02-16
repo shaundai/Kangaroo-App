@@ -58,14 +58,14 @@ export default function AddItemScreen({ name, desc, owner, box, location, quanti
             <TouchableOpacity onPress={() => handleDecrement()}>
               <Ionicons name="ios-remove-circle-outline" size={25} color="black" style={styles.increment}/>
             </TouchableOpacity>
-            <Input inputContainerStyle={{borderBottomWidth: 0, width: 60, alignSelf: 'center'}} inputStyle={styles.field} value={`${newItem.quantity}`} placeholder='1' placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, quantity)} ></Input>
+            <Input inputContainerStyle={{borderBottomWidth: 0, width: 60, alignSelf: 'center'}} inputStyle={styles.quantity} value={`${newItem.quantity}`} placeholder='1' placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, quantity)} ></Input>
             <TouchableOpacity onPress={() => handleIncrement()}>
               <Ionicons name="ios-add-circle-outline" size={25} color="black" style={styles.increment}/>
             </TouchableOpacity>
           </View>
       </View>
       <Text style={styles.tag}>Description</Text>
-      <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.desc} placeholder="Conair Blue" placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, desc)} ></Input>
+      <Input multiline numberOfLines={4} inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.description} value={newItem.desc} placeholder="Conair Blue" placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, desc)} ></Input>
       <TouchableOpacity style={styles.button}
       onPress={(e)=>{
         dispatch(addItem(newItem))}}>
@@ -108,6 +108,30 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
     borderBottomColor: 'white'
   },
+  quantity: {
+    backgroundColor: 'white',
+    fontSize: 16,
+    color: 'black',
+    textAlign: 'center',
+    marginTop: 5,
+    borderRadius: 8,
+    borderBottomWidth: 0,
+    borderBottomColor: 'white',
+  },
+  description: {
+    backgroundColor: 'white',
+    fontSize: 16,
+    color: 'black',
+    paddingTop: 10,
+    paddingLeft: 15,
+    paddingRight: 10,
+    paddingBottom: 10,
+    marginTop: 5,
+    borderRadius: 8,
+    borderBottomWidth: 0,
+    borderBottomColor: 'white',
+    height: 90,
+    },
   button: {
     marginTop: 30,
     width: 120,
@@ -116,9 +140,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: '#484848',
     justifyContent: 'center',
-  },
-  quantity: {
-
   },
   buttonText: {
     color: 'white',
