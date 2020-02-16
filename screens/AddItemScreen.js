@@ -4,9 +4,11 @@ import { Input } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../src/actions/index';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function AddItemScreen({ name, desc, owner, box, location, quantity}) {
-  const [newItem, setNewItem] = useState({ name: '', desc: '', owner: '', box: '', location: '', quantity: ''});
+  const [count, setCount] = useState(1);
+  const [newItem, setNewItem] = useState({ name: '', desc: '', owner: '', box: '', location: '', quantity: count});
   const dispatch = useDispatch();
 
   name = 'name';
@@ -22,6 +24,16 @@ export default function AddItemScreen({ name, desc, owner, box, location, quanti
     setNewItem(newItemPart)
     console.log(newItemPart)
     };
+
+    handleIncrement = () => {
+      setCount(count + 1)
+      newItem.quantity = count
+    }
+
+    handleDecrement = () => {
+      setCount(count - 1)
+      newItem.quantity = count
+    }
 
   return (
     <ScrollView contentContainerStyle={styles.container} >
@@ -40,16 +52,24 @@ export default function AddItemScreen({ name, desc, owner, box, location, quanti
           <Input inputContainerStyle={{borderBottomWidth: 0, width: 150}} inputStyle={styles.field} value={newItem.location} placeholder="Public Storage" placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, location)} ></Input>
         </View>
       </View>
-      <View>
+      <View style={{alignItems: 'center', marginTop: 10}}>
           <Text style={styles.tag}>Quantity</Text>
-          <Input inputContainerStyle={{borderBottomWidth: 0, width: 50}} inputStyle={styles.field} value={newItem.quantity} placeholder="1" placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, quantity)} ></Input>
+          <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: 90}}>
+            <TouchableOpacity onPress={() => handleDecrement()}>
+              <Ionicons name="ios-remove-circle-outline" size={25} color="black" style={styles.increment}/>
+            </TouchableOpacity>
+            <Input inputContainerStyle={{borderBottomWidth: 0, width: 60, alignSelf: 'center'}} inputStyle={styles.field} value={`${newItem.quantity}`} placeholder='1' placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, quantity)} ></Input>
+            <TouchableOpacity onPress={() => handleIncrement()}>
+              <Ionicons name="ios-add-circle-outline" size={25} color="black" style={styles.increment}/>
+            </TouchableOpacity>
+          </View>
       </View>
       <Text style={styles.tag}>Description</Text>
       <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.desc} placeholder="Conair Blue" placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, desc)} ></Input>
       <TouchableOpacity style={styles.button}
       onPress={(e)=>{
         dispatch(addItem(newItem))}}>
-          <Text style={styles.buttonText}>Done! Add Item</Text>
+          <Text style={styles.buttonText}>Add</Text>
           </TouchableOpacity>
       </View>
     </ScrollView>
@@ -90,17 +110,20 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 30,
-    width: 200,
+    width: 120,
     height: 50,
     borderRadius: 8,
     alignSelf: 'center',
     backgroundColor: '#484848',
     justifyContent: 'center',
   },
+  quantity: {
+
+  },
   buttonText: {
     color: 'white',
     textAlignVertical: 'center',
-    fontSize: 16,
+    fontSize: 20,
     textAlign: 'center',
   }
 });
