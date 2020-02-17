@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { Input } from 'react-native-elements';
 
-export default function HomeScreen(props) {
+export default function HomeScreen() {
   const [term, setTerm] = useState('');
     
     const handleTermChange = (e) => {
@@ -18,7 +18,8 @@ export default function HomeScreen(props) {
 
     const search = () => {
         const newTerm = Object.values({term})
-        props.onSearch(newTerm)
+        onSearch(newTerm)
+        console.log(newTerm)
         }
 
   return (
