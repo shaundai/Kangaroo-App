@@ -38,8 +38,16 @@ export default function AddItemScreen({ name, desc, owner, box, location, quanti
   return (
     <ScrollView contentContainerStyle={styles.container} >
       <View containerStyle={{flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center', backgroundColor: '317873'}}>
+      <View style={styles.miniGrid}>
+        <View>
       <Text style={styles.tag}>Item</Text>
-      <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.name} placeholder="Hair Dryer" placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, name)} required></Input>
+      <Input inputContainerStyle={{borderBottomWidth: 0, width: 150}} inputStyle={styles.field} value={newItem.name} placeholder="Hair Dryer" placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, name)} required></Input>
+      </View>
+      <View>
+      <Text style={styles.tag}>Description</Text>
+      <Input inputContainerStyle={{borderBottomWidth: 0, width: 150}} inputStyle={styles.description} value={newItem.desc} placeholder="Conair Blue" placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, desc)} ></Input>
+      </View>
+      </View>
       <Text style={styles.tag}>Owner</Text>
       <Input inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.field} value={newItem.owner} placeholder="David" placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, owner)} ></Input>
       <View style={styles.miniGrid}>
@@ -64,8 +72,6 @@ export default function AddItemScreen({ name, desc, owner, box, location, quanti
             </TouchableOpacity>
           </View>
       </View>
-      <Text style={styles.tag}>Description</Text>
-      <Input multiline numberOfLines={4} inputContainerStyle={{borderBottomWidth: 0}} inputStyle={styles.description} value={newItem.desc} placeholder="Conair Blue" placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, desc)} ></Input>
       <TouchableOpacity style={styles.button}
       onPress={(e)=>{
         dispatch(addItem(newItem))}}>
@@ -85,13 +91,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#F0F0F0',
     flex: 1,
     padding: 10,
+    paddingTop: 5,
     },
   tag: {
     color: 'black',
     padding: 10,
-    paddingTop: 15,
+    paddingTop: 12,
     paddingBottom: 0,
-    fontSize: 19,
+    fontSize: 17,
   },
   miniGrid: {
     flexDirection: "row",
@@ -99,7 +106,7 @@ const styles = StyleSheet.create({
   },
   field: {
     backgroundColor: 'white',
-    fontSize: 16,
+    fontSize: 15,
     color: 'black',
     paddingLeft: 15,
     paddingRight: 10,
@@ -130,12 +137,12 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderBottomWidth: 0,
     borderBottomColor: 'white',
-    height: 90,
+    height: 40,
     },
   button: {
-    marginTop: 30,
-    width: 120,
-    height: 50,
+    marginTop: 25,
+    width: 100,
+    height: 35,
     borderRadius: 8,
     alignSelf: 'center',
     backgroundColor: '#484848',
@@ -144,7 +151,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     textAlignVertical: 'center',
-    fontSize: 20,
+    fontSize: 18,
     textAlign: 'center',
   }
 });
