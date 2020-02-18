@@ -22,17 +22,16 @@ export default function AddItemScreen({ name, desc, owner, box, location, quanti
     const newItemPart = {...newItem};
     newItemPart[`${itemPart}`] = text;
     setNewItem(newItemPart)
-    console.log(newItemPart)
     };
 
-    handleIncrement = () => {
-      setCount(count + 1)
-      newItem.quantity = count
+  handleIncrement = () => {
+    setCount(count + 1)
+    newItem.quantity = count
     }
 
-    handleDecrement = () => {
-      setCount(count - 1)
-      newItem.quantity = count
+  handleDecrement = () => {
+    setCount(count - 1)
+    newItem.quantity = count
     }
 
   return (
