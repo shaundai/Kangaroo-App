@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { search } from '../src/actions/index';
 import {
+  FlatList,
+  ListItem,
   ScrollView,
   StyleSheet,
   Text,
@@ -10,27 +13,42 @@ import { Input } from 'react-native-elements';
 
 export default function HomeScreen() {
   const [term, setTerm] = useState('');
+  const searchResults = useSelector(state => state.itemListReducer);
+  const list = searchResults;
   const dispatch = useDispatch();
+  keyExtractor = item => (
+    item.id.toString()
+)
     
     const handleTermChange = (e) => {
-        setTerm(e)
-       // console.log(e)
+      setTerm(e)
+      console.log(e)
     }
 
-    // not sure if I need this? const search = () => {
-       // const newTerm = Object.values({term})
-       // onSearch(newTerm)
-      //  console.log(newTerm)
-      //  }
+    renderItem = ({ item }) => (
+      <ListItem
+          title={item.name}
+          subtitleNumberOfLines={2}
+          subtitle={item.desc}
+          leftAvatar={{ source: { uri: item.avatar_url } }}
+          badge={{value: item.quantity, badgeStyle: {backgroundColor: '#000'}}}
+          bottomDivider
+          chevron
+          />
+    )
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Input onChangeText={text => handleTermChange(text)} placeholder='Search for an item...'></Input>
-      <TouchableOpacity onPress={(e)=>{
+      <TouchableOpacity onPress={()=>{
         dispatch(search(term));
       }}>
         <Text>Search</Text>
       </TouchableOpacity>
+      <FlatList
+      data={list}
+      renderItem={renderItem}
+      keyExtractor={keyExtractor}/>
     </ScrollView>
   );
 }
