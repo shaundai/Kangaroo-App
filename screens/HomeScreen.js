@@ -13,7 +13,8 @@ import { Input } from 'react-native-elements';
 
 export default function HomeScreen() {
   const [term, setTerm] = useState('');
-  const searchResults = useSelector(state => state.itemListReducer);
+  const searchStuff = useSelector(state => state.itemListReducer);
+  const [searchResults, setSearchResults] = useState([]);
   const list = searchResults;
   const dispatch = useDispatch();
   keyExtractor = item => (
@@ -41,12 +42,12 @@ export default function HomeScreen() {
     <ScrollView contentContainerStyle={styles.container}>
       <Input onChangeText={text => handleTermChange(text)} placeholder='Search for an item...'></Input>
       <TouchableOpacity onPress={()=>{
-        dispatch(search(term));
+        console.log(dispatch(search(term)));
       }}>
         <Text>Search</Text>
       </TouchableOpacity>
       <FlatList
-      data={list}
+      data={searchResults}
       renderItem={renderItem}
       keyExtractor={keyExtractor}/>
     </ScrollView>
