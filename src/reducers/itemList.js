@@ -12,8 +12,6 @@ const itemListReducer = (state = itemList, action) => {
                     ...action.payload
                 }         
             ];
-        case 'SEARCH':
-            return state.filter(item => item.name.includes(action.term) || item.desc.includes(action.term));
         default:
             return state
     }}

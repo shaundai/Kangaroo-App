@@ -11,8 +11,3 @@ export const deleteItem = (id) => ({
      id: newId++,
      payload
  })
-
- export const search = (term) => ({
-     type: 'SEARCH',
-     term
- })

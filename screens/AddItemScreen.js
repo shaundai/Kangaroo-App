@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, View, Text } from 'react-native';
+import { ScrollView, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { Input } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../src/actions/index';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function AddItemScreen({ name, desc, owner, box, location, quantity}) {

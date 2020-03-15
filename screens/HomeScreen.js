@@ -1,48 +1,50 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { search } from '../src/actions/index';
+import { useSelector } from 'react-redux';
 import {
   FlatList,
-  ListItem,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
 } from 'react-native';
-import { Input } from 'react-native-elements';
+import { Input, ListItem } from 'react-native-elements';
 
 export default function HomeScreen() {
+  const itemList = useSelector(state => state.itemListReducer);
+  const list = itemList;
   const [term, setTerm] = useState('');
-  const searchStuff = useSelector(state => state.itemListReducer);
   const [searchResults, setSearchResults] = useState([]);
-  const list = searchResults;
-  const dispatch = useDispatch();
   keyExtractor = item => (
     item.id.toString()
 )
     
     const handleTermChange = (e) => {
       setTerm(e)
-      console.log(e)
+      console.log(searchResults)
     }
 
-    renderItem = ({ item }) => (
+    const handleSearch = () => {
+      let results = list.filter(item => item.name.includes(term) || item.desc.includes(term));
+      setSearchResults(results);
+    }
+
+    renderItem = (item) => (
       <ListItem
-          title={item.name}
-          subtitleNumberOfLines={2}
-          subtitle={item.desc}
-          leftAvatar={{ source: { uri: item.avatar_url } }}
-          badge={{value: item.quantity, badgeStyle: {backgroundColor: '#000'}}}
-          bottomDivider
-          chevron
-          />
+      title={item.name}
+      subtitleNumberOfLines={2}
+      subtitle={item.desc}
+      leftAvatar={{ source: { uri: item.avatar_url } }}
+      badge={{value: item.quantity, badgeStyle: {backgroundColor: '#000'}}}
+      bottomDivider
+      chevron
+      />
     )
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Input onChangeText={text => handleTermChange(text)} placeholder='Search for an item...'></Input>
       <TouchableOpacity onPress={()=>{
-        console.log(dispatch(search(term)));
+        handleSearch(term)
       }}>
         <Text>Search</Text>
       </TouchableOpacity>
