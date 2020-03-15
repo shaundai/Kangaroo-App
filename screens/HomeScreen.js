@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  View
 } from 'react-native';
 import { Input, ListItem } from 'react-native-elements';
 
@@ -20,18 +21,17 @@ export default function HomeScreen() {
     
     const handleTermChange = (e) => {
       setTerm(e)
-      console.log(searchResults)
     }
 
     const handleSearch = () => {
       let results = list.filter(item => item.name.includes(term) || item.desc.includes(term));
       setSearchResults(results);
+      console.log(results)
     }
 
     renderItem = (item) => (
       <ListItem
       title={item.name}
-      subtitleNumberOfLines={2}
       subtitle={item.desc}
       leftAvatar={{ source: { uri: item.avatar_url } }}
       badge={{value: item.quantity, badgeStyle: {backgroundColor: '#000'}}}
@@ -41,18 +41,18 @@ export default function HomeScreen() {
     )
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View contentContainerStyle={styles.container}>
       <Input onChangeText={text => handleTermChange(text)} placeholder='Search for an item...'></Input>
       <TouchableOpacity onPress={()=>{
         handleSearch(term)
       }}>
         <Text>Search</Text>
       </TouchableOpacity>
-      <FlatList
-      data={searchResults}
-      renderItem={renderItem}
-      keyExtractor={keyExtractor}/>
-    </ScrollView>
+        <FlatList
+        data={searchResults}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}/>
+    </View>
   );
 }
 
