@@ -41,7 +41,7 @@ export default function HomeScreen() {
 
   return (
     <View contentContainerStyle={styles.container}>
-      <Input onChangeText={text => handleTermChange(text)} placeholder='Search for an item...'></Input>
+      <Input inputContainerStyle={{borderBottomWidth: 0, width: 250, alignSelf: 'center', marginTop: 10}} inputStyle={styles.search} onChangeText={text => handleTermChange(text)} placeholder='Search for an item...'></Input>
       <TouchableOpacity onPress={()=>{
         handleSearch(term)
       }}>
@@ -68,6 +68,13 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingTop: 5,
     },
+  search: {
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    padding: 5,
+  },
   searchButtonContainer: {
     backgroundColor: 'gray',
     borderRadius: 10,
