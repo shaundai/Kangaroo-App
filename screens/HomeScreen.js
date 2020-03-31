@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   FlatList,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native';
 import { Input, ListItem } from 'react-native-elements';
 
@@ -29,7 +28,7 @@ export default function HomeScreen() {
       console.log(results)
     }
 
-    renderItem = (item) => (
+    renderItem = ({ item }) => (
       <ListItem
       title={item.name}
       subtitle={item.desc}
@@ -46,7 +45,9 @@ export default function HomeScreen() {
       <TouchableOpacity onPress={()=>{
         handleSearch(term)
       }}>
-        <Text>Search</Text>
+        <View style={styles.searchButtonContainer}>
+          <Text style={styles.searchButton}>Search</Text>
+        </View>
       </TouchableOpacity>
         <FlatList
         data={searchResults}
@@ -67,4 +68,19 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingTop: 5,
     },
+  searchButtonContainer: {
+    backgroundColor: 'gray',
+    borderRadius: 10,
+    width: 100,
+    alignSelf: 'center',
+    margin: 10,
+    marginBottom: 25,
+  },
+  searchButton: {
+    textAlign: 'center',
+    padding: 10,
+    color: 'white',
+    fontSize: 18,
+    fontWeight: '700',
+  },
 });
