@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { Input, ListItem } from 'react-native-elements';
 
-export default function HomeScreen() {
+export default function FindItemScreen() {
   const itemList = useSelector(state => state.itemListReducer);
   const list = itemList;
   const [term, setTerm] = useState('');
@@ -57,7 +57,7 @@ export default function HomeScreen() {
   );
 }
 
-HomeScreen.navigationOptions = {
+FindItemScreen.navigationOptions = {
   title: 'Find Item',
 };
 

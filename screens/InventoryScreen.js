@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TouchableHighlight } from 'react-native';
+import { View, StyleSheet, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { ListItem } from 'react-native-elements'
 import { deleteItem } from '../src/actions/index';
@@ -36,6 +36,7 @@ export default function InventoryScreen(){
         subtitle={item.desc}
         leftAvatar={{ source: { uri: item.avatar_url } }}
         badge={{value: item.quantity, badgeStyle: {backgroundColor: '#000'}}}
+        onPress={()=>placeholder}
         bottomDivider
         chevron
         />

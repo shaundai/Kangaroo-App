@@ -4,7 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
+import FindItemScreen from '../screens/FindItemScreen';
 import AddItemScreen from '../screens/AddItemScreen';
 import InventoryScreen from '../screens/InventoryScreen';
 import SettingsScreen from '../screens/SettingsScreen';
@@ -14,13 +14,13 @@ const config = Platform.select({
   default: {},
 });
 
-const HomeStack = createStackNavigator({
-    Home: HomeScreen,
+const FindItemStack = createStackNavigator({
+    FindItem: FindItemScreen,
   },
   config
 );
 
-HomeStack.navigationOptions = {
+FindItemStack.navigationOptions = {
   tabBarLabel: 'Find Item',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -34,7 +34,7 @@ HomeStack.navigationOptions = {
   ),
 };
 
-HomeStack.path = '';
+FindItemStack.path = '';
 
 const AddItemStack = createStackNavigator(
   {
@@ -85,7 +85,7 @@ tabBarIcon: ({ focused }) => (
 SettingsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-  HomeStack,
+  FindItemStack,
   AddItemStack,
   InventoryStack,
   SettingsStack,
