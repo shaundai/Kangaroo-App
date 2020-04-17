@@ -1,16 +1,17 @@
 import React from 'react';
-import { Overlay } from 'react-native-elements';
-import { StyleSheet, Text, Button } from 'react-native'
+import { Button, Overlay } from 'react-native-elements';
+import { StyleSheet, Text, View } from 'react-native'
 
 export default function ItemModal({details, handleClose, modalIsVisible}){
 
 return (
     <Overlay
+    overlayStyle={{padding: 0}}
     isVisible={modalIsVisible}
     onBackdropPress={handleClose}
     children={details}
-    width="auto"
-    height="auto">
+    width="75%"
+    height="50%">
         <Text style={styles.title}>{details.name}</Text>
         <Text style={styles.details}>{details.desc}</Text>
         <Text style={styles.details}>{details.quantity}</Text>
@@ -25,6 +26,10 @@ const styles = StyleSheet.create({
         fontSize: 40,
         fontWeight: 'bold',
         textAlign: 'center',
+        width: 'auto',
+        color: 'black',
+        margin: 0,
+        padding: 10,
     },
     details: {
         fontSize: 25,
