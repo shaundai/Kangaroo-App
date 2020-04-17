@@ -1,10 +1,12 @@
-import React from 'react';
-import { View, StyleSheet, TouchableHighlight, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, TouchableHighlight } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { ListItem } from 'react-native-elements'
 import { deleteItem } from '../src/actions/index';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import { Ionicons } from '@expo/vector-icons';
+
+import ItemModal from '../src/components/ItemModal';
 
 //Components
 //TODO add additemform at the top
@@ -18,6 +20,7 @@ export default function InventoryScreen(){
     keyExtractor = item => (
         item.id.toString()
     )
+    const [modalIsVisible, setModalVisibility] = useState(false);
 
     renderHiddenItem = ({item}) => (
         <View style={styles.hiddenDelete}>
@@ -29,6 +32,15 @@ export default function InventoryScreen(){
             </View>
     )
     
+    showModal = () => {
+        setModalVisibility(true);
+        console.log(modalIsVisible)
+    }
+
+    hideModal = () => {
+        setModalVisibility(false);
+    }
+
     renderItem = ({ item }) => (
     <ListItem
         title={item.name}
@@ -36,11 +48,11 @@ export default function InventoryScreen(){
         subtitle={item.desc}
         leftAvatar={{ source: { uri: item.avatar_url } }}
         badge={{value: item.quantity, badgeStyle: {backgroundColor: '#000'}}}
-        onPress={()=>placeholder}
+        onPress={showModal}
         bottomDivider
         chevron
         />
-)
+    )
 
         return (
             <View>
@@ -59,6 +71,7 @@ export default function InventoryScreen(){
                     }}, 2000)
     }}
                 />
+                <ItemModal modalIsVisible={modalIsVisible}/>
             </View>
         )
 }
