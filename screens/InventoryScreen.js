@@ -21,6 +21,7 @@ export default function InventoryScreen(){
         item.id.toString()
     )
     const [modalIsVisible, setModalVisibility] = useState(false);
+    const [selectedItem, setSelectedItem] = useState({});
 
     renderHiddenItem = ({item}) => (
         <View style={styles.hiddenDelete}>
@@ -32,9 +33,10 @@ export default function InventoryScreen(){
             </View>
     )
     
-    showModal = () => {
+    handlePress = (item) => {
         setModalVisibility(true);
-        console.log(modalIsVisible)
+        setSelectedItem(item);
+        console.log(item)
     }
 
     hideModal = () => {
@@ -48,7 +50,7 @@ export default function InventoryScreen(){
         subtitle={item.desc}
         leftAvatar={{ source: { uri: item.avatar_url } }}
         badge={{value: item.quantity, badgeStyle: {backgroundColor: '#000'}}}
-        onPress={showModal}
+        onPress={() => {handlePress(item)}}
         bottomDivider
         chevron
         />
@@ -71,7 +73,7 @@ export default function InventoryScreen(){
                     }}, 2000)
     }}
                 />
-                <ItemModal modalIsVisible={modalIsVisible} handleClose={hideModal}/>
+         <ItemModal modalIsVisible={modalIsVisible} handleClose={hideModal} details={selectedItem}/>
             </View>
         )
 }
