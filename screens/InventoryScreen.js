@@ -71,7 +71,7 @@ export default function InventoryScreen(){
                     }}, 2000)
     }}
                 />
-                <ItemModal modalIsVisible={modalIsVisible}/>
+                <ItemModal modalIsVisible={modalIsVisible} handleClose={hideModal}/>
             </View>
         )
 }
