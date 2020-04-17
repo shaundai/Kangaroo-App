@@ -11,14 +11,23 @@ return (
     children={details}
     width="auto"
     height="auto">
-        <Text>{details.name}</Text>
-        <Text>{details.desc}</Text>
-        <Text>{details.quantity}</Text>
+        <Text style={styles.title}>{details.name}</Text>
+        <Text style={styles.details}>{details.desc}</Text>
+        <Text style={styles.details}>{details.quantity}</Text>
+        <Text h3>{details.location}</Text>
         <Button title={"Close"} onPress={handleClose}></Button>
     </Overlay>
 )
 }
 
 const styles = StyleSheet.create({
-
+    title: {
+        fontSize: 40,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    details: {
+        fontSize: 25,
+        textAlign: 'center',
+    }
 })
