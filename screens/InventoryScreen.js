@@ -36,7 +36,6 @@ export default function InventoryScreen(){
     handlePress = (item) => {
         setModalVisibility(true);
         setSelectedItem(item);
-        console.log(item)
     }
 
     hideModal = () => {
