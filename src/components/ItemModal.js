@@ -34,7 +34,7 @@ return (
         </View>
         <View style={{flexDirection: 'row', alignSelf: 'center', marginTop: 10}}>
             <Button buttonStyle={styles.button} title={"Close"} onPress={handleClose}></Button>
-            <Button buttonStyle={styles.editButton} title={"Edit"}></Button>
+            <Button buttonStyle={styles.editButton} titleStyle={{color: '#317873'}} title={"Edit"} type={'outline'}></Button>
         </View>
     </Overlay>
 )
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     boxContainer: {
         alignSelf: 'center',
         justifyContent: 'center',
-        backgroundColor: 'green',
+        backgroundColor: '#317873',
         borderRadius: 15,
         height: 27,
         width: 60
@@ -81,11 +81,12 @@ const styles = StyleSheet.create({
     },
     button: {
         alignSelf: 'center',
-        width: '80%'
+        backgroundColor: '#317873',
+        width: '80%',
     },
     editButton: {
         alignSelf: 'center',
         width: '80%',
-        backgroundColor: 'darkgray',
+        borderColor: '#317873',
     }
 })
