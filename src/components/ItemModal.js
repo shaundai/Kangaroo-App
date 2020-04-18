@@ -15,10 +15,10 @@ return (
     height="50%">
         <Text style={styles.title}>{details.name}</Text>
         <View style={{flexDirection: 'row'}}>
-        <Text style={styles.details}>{details.desc}</Text>
-        <View style={{backgroundColor: 'black', borderRadius: 15, height: 30,}}>
+        <View style={{backgroundColor: 'black', borderRadius: 15, height: 30}}>
             <Text style={styles.quantity}>{details.quantity}</Text>
         </View>
+        <Text style={styles.details}>{details.desc}</Text>
         </View>
         <View style={{flexDirection: 'row'}}>
             <Ionicons name="ios-person" size={30} color="black" />
@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     details: {
         fontSize: 25,
         textAlign: 'center',
+        width: 200
     },
     button: {
         alignSelf: 'center',
