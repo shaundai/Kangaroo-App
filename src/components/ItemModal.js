@@ -3,8 +3,6 @@ import { Button, Overlay } from 'react-native-elements';
 import { StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-import Person from '../../assets/images/person.png';
-
 export default function ItemModal({details, handleClose, modalIsVisible}){
 
 return (
@@ -16,9 +14,12 @@ return (
     width="75%"
     height="50%">
         <Text style={styles.title}>{details.name}</Text>
+        <View style={{flexDirection: 'row'}}>
         <Text style={styles.details}>{details.desc}</Text>
-        <Text style={styles.details}>{details.quantity}</Text>
-        
+        <View style={{backgroundColor: 'black', borderRadius: 15, height: 30,}}>
+            <Text style={styles.quantity}>{details.quantity}</Text>
+        </View>
+        </View>
         <View style={{flexDirection: 'row'}}>
             <Ionicons name="ios-person" size={30} color="black" />
             <Text h3>{details.owner}</Text>
@@ -26,6 +27,10 @@ return (
         <View style={{flexDirection: 'row'}}>
             <Ionicons name="ios-pin" size={30} color="black" />
             <Text h3>{details.location}</Text>
+        </View>
+        <View style={{flexDirection: 'row'}}>
+            <Ionicons name="ios-cube" size={30} color="black" />
+            <Text h3>{details.box}</Text>
         </View>
         <View style={{flexDirection: 'row', alignSelf: 'center'}}>
             <Button buttonStyle={styles.button} title={"Close"} onPress={handleClose}></Button>
@@ -44,6 +49,12 @@ const styles = StyleSheet.create({
         color: 'black',
         margin: 0,
         padding: 10,
+    },
+    quantity: {
+        textAlign: 'center',
+        color: 'white',
+        width: 30,
+        fontSize: 20,
     },
     details: {
         fontSize: 25,
