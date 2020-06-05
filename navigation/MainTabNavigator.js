@@ -9,6 +9,8 @@ import AddItemScreen from '../screens/AddItemScreen';
 import InventoryScreen from '../screens/InventoryScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
+import Colors from '../constants/Colors';
+
 const config = Platform.select({
   web: { headerMode: 'screen' },
   default: {},
@@ -32,6 +34,9 @@ FindItemStack.navigationOptions = {
       }
     />
   ),
+  tabBarOptions: {
+    activeTintColor: Colors.tabIconSelected,
+  },
 };
 
 FindItemStack.path = '';
@@ -48,6 +53,9 @@ AddItemStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-add-circle-outline' : 'md-add-circle-outline'} />
   ),
+  tabBarOptions: {
+    activeTintColor: Colors.tabIconSelected,
+  },
 };
 
 AddItemStack.path = '';
@@ -64,6 +72,9 @@ InventoryStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-clipboard' : 'md-clipboard'} />
   ),
+  tabBarOptions: {
+    activeTintColor: Colors.tabIconSelected,
+  }
 };
 
 InventoryStack.path = '';
@@ -80,6 +91,9 @@ tabBarLabel: 'Scan Box',
 tabBarIcon: ({ focused }) => (
   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-qr-scanner' : 'md-qr-scanner'} />
 ),
+tabBarOptions: {
+  activeTintColor: Colors.tabIconSelected,
+},
 };
 
 SettingsStack.path = '';

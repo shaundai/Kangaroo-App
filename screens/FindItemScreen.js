@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import { Input, ListItem } from 'react-native-elements';
 
+import Colors from '../constants/Colors';
+
 export default function FindItemScreen() {
   const itemList = useSelector(state => state.itemListReducer);
   const list = itemList;
@@ -40,13 +42,16 @@ export default function FindItemScreen() {
     )
 
   return (
-    <View contentContainerStyle={styles.container}>
-      <Input inputContainerStyle={{borderBottomWidth: 0, width: 250, alignSelf: 'center', marginTop: 10}} inputStyle={styles.search} onChangeText={text => handleTermChange(text)} placeholder='Search for an item...'></Input>
+    <View style={styles.container}>
+      <Input inputContainerStyle={{borderBottomWidth: 0, width: 250, alignSelf: 'center', marginTop: 20, marginBottom: 8, color: 'white'}} inputStyle={styles.search} onChangeText={text => handleTermChange(text)} placeholder='Search for an item...'></Input>
       <TouchableOpacity onPress={()=>{
         handleSearch(term)
       }}>
         <View style={styles.searchButtonContainer}>
           <Text style={styles.searchButton}>Search</Text>
+        </View>
+        <View style={{marginLeft: 12}}>
+        <Text>Search Results:</Text>
         </View>
       </TouchableOpacity>
         <FlatList
@@ -59,16 +64,25 @@ export default function FindItemScreen() {
 
 FindItemScreen.navigationOptions = {
   title: 'Find Item',
+  headerTintColor: Colors.blueHeader,
+  headerStyle: {
+    backgroundColor: Colors.softGray,
+    paddingBottom: 8,
+  },
+  headerTitleStyle: {
+    fontSize: 24
+  },
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#F0F0F0',
+    backgroundColor: Colors.softGray,
     flex: 1,
     padding: 10,
     paddingTop: 5,
     },
   search: {
+    borderColor: Colors.softBlue,
     borderWidth: 1,
     borderRadius: 10,
     paddingLeft: 10,
@@ -76,7 +90,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   searchButtonContainer: {
-    backgroundColor: 'gray',
+    backgroundColor: Colors.blueMain,
     borderRadius: 10,
     width: 100,
     alignSelf: 'center',
