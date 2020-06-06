@@ -8,7 +8,6 @@ import {
   View,
 } from 'react-native';
 import { Input, ListItem } from 'react-native-elements';
-import TitleTest from '../src/components/TitleTest'
 
 import Colors from '../constants/Colors';
 
@@ -64,7 +63,15 @@ export default function FindItemScreen() {
 }
 
 FindItemScreen.navigationOptions = {
-  headerTitle: <TitleTest />
+  title: 'Find Item',
+  headerTintColor: Colors.softGray,
+  headerStyle: {
+    backgroundColor: Colors.blueHeader,
+    paddingBottom: 8,
+  },
+  headerTitleStyle: {
+    fontSize: 24
+  },
 };
 
 const styles = StyleSheet.create({

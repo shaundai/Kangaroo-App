@@ -6,6 +6,7 @@ import { deleteItem } from '../src/actions/index';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import { Ionicons } from '@expo/vector-icons';
 
+import InventoryHeader from '../src/components/InventoryHeader';
 import ItemModal from '../src/components/ItemModal';
 
 import Colors from '../constants/Colors';
