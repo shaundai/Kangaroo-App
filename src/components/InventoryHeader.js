@@ -1,56 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
-    StyleSheet,
-    Text,
-    View,
-  } from 'react-native';
+  StyleSheet,
+  View,
+} from 'react-native';
+import { Input } from 'react-native-elements';
 
 import Colors from '../../constants/Colors';
 
 export default function InventoryHeader() {
-        return (
-            <View>
-               <Text>Testing Text</Text> 
-            </View>
-        )
+  const itemList = useSelector(state => state.itemListReducer);
+  const list = itemList;
+  const [term, setTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  keyExtractor = item => (
+    item.id.toString()
+)
+    
+    const handleTermChange = (e) => {
+      setTerm(e)
     }
+
+    const handleSearch = () => {
+      let results = list.filter(item => item.name.includes(term) || item.desc.includes(term));
+      setSearchResults(results);
+      console.log(results)
+    }
+
+  return (
+    <View style={styles.container}>
+      <Input inputContainerStyle={styles.searchContainer} inputStyle={styles.search} onChangeText={text => handleTermChange(text)} placeholder='Search for an item...'></Input>
+    </View>
+  );
+}
 
 const styles = StyleSheet.create ({
     header: {
-        color: Colors.softGray,
-        fontSize: 24
+        backgroundColor: 'black',
+        fontSize: 12
     },
-    headerContainer: {
+    headerStyle: {
         backgroundColor: Colors.blueHeader,
-        paddingBottom: 8,
     },
-container: {
-    backgroundColor: Colors.softGray,
-    flex: 1,
-    padding: 10,
-    paddingTop: 5,
+    container: {
+        backgroundColor: Colors.softGray,
+        flex: 1,
+        paddingBottom: 5,
+        marginBottom: 8,
+        },
+    searchContainer: {
+        borderBottomWidth: 0,
+        width: 200,
+        alignSelf: 'center',
+        marginTop: 4,
+        marginBottom: 2,
+        },
+    search: {
+        borderColor: Colors.softBlue,
+        borderWidth: 1,
+        borderRadius: 20,
+        paddingLeft: 10,
+        paddingRight: 10,
+        fontSize: 15,
     },
-  search: {
-    borderColor: Colors.softBlue,
-    borderWidth: 1,
-    borderRadius: 10,
-    paddingLeft: 10,
-    paddingRight: 10,
-    padding: 5,
-  },
-  searchButtonContainer: {
-    backgroundColor: Colors.blueMain,
-    borderRadius: 10,
-    width: 100,
-    alignSelf: 'center',
-    margin: 10,
-    marginBottom: 25,
-  },
-  searchButton: {
-    textAlign: 'center',
-    padding: 10,
-    color: 'white',
-    fontSize: 18,
-    fontWeight: '700',
-  },
 })

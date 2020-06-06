@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TouchableHighlight } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { ListItem } from 'react-native-elements'
+import { Input, ListItem } from 'react-native-elements'
 import { deleteItem } from '../src/actions/index';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import { Ionicons } from '@expo/vector-icons';
@@ -104,13 +104,8 @@ const styles = StyleSheet.create({
 })
 
 InventoryScreen.navigationOptions = {
-  title: 'Inventory',
-  headerTintColor: Colors.softGray,
+  headerTitle: props => <InventoryHeader {...props} />,
   headerStyle: {
     backgroundColor: Colors.blueHeader,
-    paddingBottom: 8,
-  },
-  headerTitleStyle: {
-    fontSize: 24
-  },
+},
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Overlay } from 'react-native-elements';
+import { Button, Image, Overlay } from 'react-native-elements';
 import { StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -31,6 +31,7 @@ return (
             <Text>{details.quantity}</Text>
         </View>
         <View style={{margin: 5, alignSelf: 'center', height: 140, width: 140, backgroundColor: 'pink'}}>
+            <Image source={{}}></Image>
         </View>
         <View style={{flexDirection: 'row', alignSelf: 'center', marginTop: 10}}>
             <Button buttonStyle={styles.button} title={"Close"} onPress={handleClose}></Button>
