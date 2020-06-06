@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextInput } from 'react-native';
+import { View, TextInput } from 'react-native';
 
 function Searchbar(props){
     const [term, setTerm] = useState('');

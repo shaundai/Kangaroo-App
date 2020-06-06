@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import { Input, ListItem } from 'react-native-elements';
+import TitleTest from '../src/components/TitleTest'
 
 import Colors from '../constants/Colors';
 
@@ -50,9 +51,9 @@ export default function FindItemScreen() {
         <View style={styles.searchButtonContainer}>
           <Text style={styles.searchButton}>Search</Text>
         </View>
-        <View style={{marginLeft: 12}}>
-        <Text>Search Results:</Text>
-        </View>
+        {searchResults.length > 0 ? <View style={{marginLeft: 12, marginBottom: 5}}>
+        <Text style={{fontSize: 18}}>Search Results:</Text>
+        </View> : console.log('nothing here')}
       </TouchableOpacity>
         <FlatList
         data={searchResults}
@@ -63,15 +64,7 @@ export default function FindItemScreen() {
 }
 
 FindItemScreen.navigationOptions = {
-  title: 'Find Item',
-  headerTintColor: Colors.blueHeader,
-  headerStyle: {
-    backgroundColor: Colors.softGray,
-    paddingBottom: 8,
-  },
-  headerTitleStyle: {
-    fontSize: 24
-  },
+  headerTitle: <TitleTest />
 };
 
 const styles = StyleSheet.create({

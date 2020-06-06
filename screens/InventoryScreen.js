@@ -8,6 +8,9 @@ import { Ionicons } from '@expo/vector-icons';
 
 import ItemModal from '../src/components/ItemModal';
 
+import Colors from '../constants/Colors';
+
+
 //Components
 //TODO add additemform at the top
 //import EditItemForm from './EditItemForm' 
@@ -101,4 +104,12 @@ const styles = StyleSheet.create({
 
 InventoryScreen.navigationOptions = {
   title: 'Inventory',
+  headerTintColor: Colors.softGray,
+  headerStyle: {
+    backgroundColor: Colors.blueHeader,
+    paddingBottom: 8,
+  },
+  headerTitleStyle: {
+    fontSize: 24
+  },
 };
