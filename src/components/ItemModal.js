@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Image, Overlay } from 'react-native-elements';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, Overlay } from 'react-native-elements';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Scissors from '../../assets/images/scissors.jpeg';
 
@@ -34,7 +34,7 @@ return (
             <Text>{details.quantity}</Text>
         </View>
         <View style={{margin: 5, alignSelf: 'center'}}>
-            <Image source={require('../../assets/images/' + 'scissors' + '.jpeg')} style={{height: 140, width: 140}}></Image>
+            <Image source={{uri: details.avatar_url}} style={{height: 140, width: 140}}></Image>
         </View>
         <View style={{flexDirection: 'row', alignSelf: 'center', marginTop: 10}}>
             <Button buttonStyle={styles.button} title={"Close"} onPress={handleClose}></Button>
