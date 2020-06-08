@@ -6,8 +6,6 @@ import Scissors from '../../assets/images/scissors.jpeg';
 
 export default function ItemModal({details, handleClose, modalIsVisible}){
 
-    const icon = details.uri
-
 return (
     <Overlay
     overlayStyle={{padding: 0}}
