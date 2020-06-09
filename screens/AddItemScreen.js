@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { addItem } from '../src/actions/index';
 import { Ionicons } from '@expo/vector-icons';
 
+import Colors from '../constants/Colors';
+
 export default function AddItemScreen({ name, desc, owner, box, location, quantity}) {
   const [count, setCount] = useState(1);
   const [newItem, setNewItem] = useState({ name: '', desc: '', owner: '', box: '', location: '', quantity: count});
@@ -82,11 +84,19 @@ export default function AddItemScreen({ name, desc, owner, box, location, quanti
 
 AddItemScreen.navigationOptions = {
   title: 'Add Item',
+  headerTintColor: Colors.softGray,
+  headerStyle: {
+    backgroundColor: Colors.blueHeader,
+    paddingBottom: 8,
+  },
+  headerTitleStyle: {
+    fontSize: 24
+  },
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#F0F0F0',
+    backgroundColor: Colors.softGray,
     flex: 1,
     padding: 10,
     paddingTop: 5,
@@ -143,13 +153,14 @@ const styles = StyleSheet.create({
     height: 35,
     borderRadius: 8,
     alignSelf: 'center',
-    backgroundColor: '#484848',
+    backgroundColor: Colors.blueMain,
     justifyContent: 'center',
   },
   buttonText: {
     color: 'white',
     textAlignVertical: 'center',
     fontSize: 18,
+    fontWeight: '700',
     textAlign: 'center',
   }
 });
