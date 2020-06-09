@@ -47,9 +47,9 @@ export default function FindItemScreen() {
       <TouchableOpacity onPress={()=>{
         handleSearch(term)
       }}>
-        <View style={styles.searchButtonContainer}>
-          <Text style={styles.searchButton}>Search</Text>
-        </View>
+        <TouchableOpacity style={styles.searchButton}>
+          <Text style={styles.searchButtonText}>Search</Text>
+        </TouchableOpacity>
         {searchResults.length > 0 ? <View style={{marginLeft: 12, marginBottom: 5}}>
         <Text style={{fontSize: 18}}>Search Results:</Text>
         </View> : console.log('nothing here')}
@@ -89,19 +89,21 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     padding: 5,
   },
-  searchButtonContainer: {
-    backgroundColor: Colors.blueMain,
-    borderRadius: 10,
+  searchButton: {
+    marginTop: 10,
     width: 100,
+    height: 35,
+    backgroundColor: Colors.blueMain,
+    borderRadius: 8,
     alignSelf: 'center',
-    margin: 10,
+    justifyContent: 'center',
     marginBottom: 25,
   },
-  searchButton: {
+  searchButtonText: {
     textAlign: 'center',
-    padding: 10,
+    textAlignVertical: 'center',
     color: 'white',
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: '700',
   },
 });

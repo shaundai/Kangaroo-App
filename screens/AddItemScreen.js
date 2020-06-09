@@ -45,6 +45,7 @@ export default function AddItemScreen({ name, desc, owner, box, location, quanti
       </View>
       <View>
       <Text style={styles.tag}>Description</Text>
+      <Text>What is this item?</Text> 
       <Input inputContainerStyle={{borderBottomWidth: 0, width: 150}} inputStyle={styles.description} value={newItem.desc} placeholder="Conair Blue" placeholderTextColor='#BEBEBE' onChangeText={text => handleChangeText(text, desc)} ></Input>
       </View>
       </View>
@@ -72,6 +73,11 @@ export default function AddItemScreen({ name, desc, owner, box, location, quanti
             </TouchableOpacity>
           </View>
       </View>
+      <TouchableOpacity style={styles.invertedButton}
+      onPress={(e)=>{
+        dispatch(addItem(newItem))}}>
+          <Text style={styles.invertedButtonText}>Cancel</Text>
+          </TouchableOpacity>
       <TouchableOpacity style={styles.button}
       onPress={(e)=>{
         dispatch(addItem(newItem))}}>
@@ -147,6 +153,17 @@ const styles = StyleSheet.create({
     borderBottomColor: 'white',
     height: 40,
     },
+  invertedButton: {
+      marginTop: 25,
+      width: 100,
+      height: 35,
+      borderRadius: 8,
+      alignSelf: 'center',
+      borderColor: Colors.blueMain,
+      borderWidth: 1,
+      backgroundColor: Colors.softGray,
+      justifyContent: 'center',
+    },
   button: {
     marginTop: 25,
     width: 100,
@@ -156,11 +173,18 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.blueMain,
     justifyContent: 'center',
   },
+  invertedButtonText: {
+    color: Colors.blueMain,
+    textAlignVertical: 'center',
+    fontSize: 20,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
   buttonText: {
     color: 'white',
     textAlignVertical: 'center',
-    fontSize: 18,
-    fontWeight: '700',
+    fontSize: 20,
+    fontWeight: '600',
     textAlign: 'center',
-  }
+  },
 });
