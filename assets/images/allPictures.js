@@ -1,0 +1,1 @@
+export const scissors = require('./hairbrush.jpg')

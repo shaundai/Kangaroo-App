@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   FlatList,
+  Image,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -34,7 +35,10 @@ export default function FindItemScreen() {
       <ListItem
       title={item.name}
       subtitle={item.desc}
-      leftAvatar={{ source: { uri: item.avatar_url } }}
+      leftAvatar={{
+        source: { uri: "../assets/images/scissors.jpeg" },
+        showEditButton: false
+      }}
       badge={{value: item.quantity, badgeStyle: {backgroundColor: '#000'}}}
       bottomDivider
       chevron
@@ -43,7 +47,7 @@ export default function FindItemScreen() {
 
   return (
     <View style={styles.container}>
-      <Input inputContainerStyle={{borderBottomWidth: 0, width: 250, alignSelf: 'center', marginTop: 20, marginBottom: 8, color: 'white'}} inputStyle={styles.search} onChangeText={text => handleTermChange(text)} placeholder='Search for an item...'></Input>
+      <Input inputContainerStyle={{borderBottomWidth: 0, width: 250, alignSelf: 'center', marginTop: 20, marginBottom: 8}} inputStyle={styles.search} onChangeText={text => handleTermChange(text)} placeholder='Search for an item...'></Input>
       <TouchableOpacity onPress={()=>{
         handleSearch(term)
       }}>
