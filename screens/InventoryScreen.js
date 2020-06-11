@@ -51,7 +51,7 @@ export default function InventoryScreen(){
         title={item.name}
         subtitleNumberOfLines={2}
         subtitle={item.desc}
-        leftAvatar={require('../assets/images/scissors.jpeg')}
+        leftAvatar={{ source: item.avatar_url }}
         badge={{value: item.quantity, badgeStyle: {backgroundColor: '#000'}}}
         onPress={() => {handlePress(item)}}
         bottomDivider
