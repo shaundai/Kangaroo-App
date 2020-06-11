@@ -43,12 +43,14 @@ const styles = StyleSheet.create ({
         backgroundColor: Colors.blueHeader,
     },
     container: {
-        backgroundColor: Colors.softGray,
+        backgroundColor: Colors.blueHeader,
         flex: 1,
         paddingBottom: 5,
         marginBottom: 8,
         },
     searchContainer: {
+        backgroundColor: Colors.softGray,
+        overflow: 'hidden',
         borderBottomWidth: 0,
         width: 200,
         alignSelf: 'center',
