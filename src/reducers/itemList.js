@@ -1,10 +1,11 @@
-const love = 'https://i.picsum.photos/id/514/200/300.jpg'
+const love = '../../../assets/images/scissors.jpeg'
 const scis = require('../../assets/images/scissors.jpeg')
 
 const itemList = [{
-            id: 1, name: "Scissors", desc: "black scissors", box: 3, location: "here", owner: "Sally", quantity: 4, avatar_url: love },
+            id: 1, name: "Scissors", desc: "black scissors", box: 3, location: "here", owner: "Sally", quantity: 4, avatar_url: love
+        },
         {
-            id: 2, name: "Brush", desc: "hair brushes", box: 'kitch3', location: "here", owner: "Sally", quantity: 1, avatar_url: '../../assets/images/scissors.jpeg'
+            id: 2, name: "Brush", desc: "hair brushes", box: 'kitch3', location: "here", owner: "Sally", quantity: 1, uri: scis
         },
         {
             id: 3, name: "Keurig", desc: "keurig and K cups", box: 'kitch3', location: "garage", owner: "Ben", quantity: 1, uri: "keurig"
